@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <title>Draw.io</title>
+  <meta name="description" content="Open and edit draw.io diagrams on your phone.">
+
+  <!-- Installable web app (iOS + Android) -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1f2937">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Draw.io">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="bar">
+    <button id="btn-open" type="button">Open</button>
+    <button id="btn-new" type="button">New</button>
+    <span id="title" title="Current file">Untitled</span>
+    <button id="btn-save" type="button" class="primary">Save</button>
+  </header>
+
+  <main>
+    <iframe id="editor" title="draw.io editor" allow="clipboard-read; clipboard-write"></iframe>
+    <div id="loading">Loading editor…</div>
+  </main>
+
+  <!-- No "accept" on purpose: iOS greys out files with unknown extensions like .drawio -->
+  <input id="file" type="file" hidden>
+
+  <div id="toast" role="status" hidden>
+    <span id="toast-text"></span>
+    <button id="toast-action" type="button" hidden></button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
