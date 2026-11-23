@@ -68,6 +68,18 @@
       dark: 'auto',
     });
     frame.src = `${EDITOR_ORIGIN}/?${p}`;
+
+    // If the editor never says "init", show why instead of an endless spinner.
+    setTimeout(() => {
+      if (state.ready) return;
+      const el = $('loading');
+      el.style.pointerEvents = 'auto';
+      el.innerHTML = '<div style="text-align:center;padding:24px">' +
+        '<p>The draw.io editor did not load.</p>' +
+        '<p style="font-size:13px;opacity:.7">' + (navigator.onLine ? 'Online, but ' + EDITOR_ORIGIN + ' did not respond (blocked by network/content blocker?).' : 'You are offline.') + '</p>' +
+        '<button id="retry" style="padding:10px 18px;font:inherit">Retry</button></div>';
+      $('retry').onclick = () => location.reload();
+    }, 12000);
   }
 
   window.addEventListener('message', (e) => {

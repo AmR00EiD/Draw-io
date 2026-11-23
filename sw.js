@@ -1,6 +1,6 @@
 // Caches the app shell so the toolbar loads instantly / offline.
 // The draw.io editor itself (embed.diagrams.net) is cross-origin and needs a connection.
-const CACHE = 'drawio-shell-v1';
+const CACHE = 'drawio-shell-v2';
 const SHELL = [
   './',
   'index.html',
